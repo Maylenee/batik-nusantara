@@ -1,0 +1,798 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+    <title>Batik Nusantara — Kenali Batik Indonesia</title>
+    <link rel="icon" href="favicon.ico" sizes="any">
+    <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+    <link rel="apple-touch-icon" href="apple-touch-icon.png">
+    <meta name="theme-color" content="#520A1D">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet">
+    <style>
+        :root {
+            --m900: #37061a;
+            --m800: #520A1D;
+            --m700: #6e1631;
+            --m600: #8c2845;
+            --m300: #d9a3b1;
+            --m100: #f5e4e9;
+            --m50: #fbf4f6;
+            --ink: #1d1114;
+            --mut: #6f6064;
+            --line: #eadfe2;
+            --bg: #fff;
+            box-sizing: border-box;
+            padding-top: env(safe-area-inset-top, 0px);
+            padding-bottom: env(safe-area-inset-bottom, 0px)
+        }
+
+        html {
+            scroll-padding-top: env(safe-area-inset-top, 0px);
+            height: 100%
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', system-ui, sans-serif;
+            background: #fff;
+            color: var(--ink);
+            -webkit-font-smoothing: antialiased
+        }
+
+        svg.i {
+            width: 1em;
+            height: 1em;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.8;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+            flex: none
+        }
+
+        .hd {
+            background: linear-gradient(180deg, var(--m800), var(--m700));
+            color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 20
+        }
+
+        .w {
+            max-width: 1180px;
+            margin: 0 auto;
+            padding: 0 16px
+        }
+
+        .bar {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            padding: 14px 0
+        }
+
+        .logo {
+            font-weight: 800;
+            font-size: 22px;
+            letter-spacing: -.02em;
+            display: flex;
+            align-items: center;
+            gap: 9px;
+            white-space: nowrap
+        }
+
+        .logo b {
+            display: grid;
+            place-items: center;
+            width: 32px;
+            height: 32px;
+            border-radius: 9px;
+            background: #fff;
+            color: var(--m800);
+            font-size: 17px
+        }
+
+        .sb {
+            flex: 1;
+            display: flex;
+            background: #fff;
+            border-radius: 6px;
+            padding: 3px;
+            max-width: 720px
+        }
+
+        .sb input {
+            flex: 1;
+            border: 0;
+            outline: 0;
+            padding: 9px 12px;
+            font: 500 14px inherit;
+            font-family: inherit;
+            color: var(--ink);
+            min-width: 0;
+            background: transparent
+        }
+
+        .sb button {
+            border: 0;
+            background: var(--m800);
+            color: #fff;
+            border-radius: 4px;
+            width: 56px;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            cursor: pointer
+        }
+
+        .sub {
+            display: flex;
+            gap: 18px;
+            font-size: 12px;
+            color: var(--m100);
+            padding: 0 0 10px;
+            overflow: auto;
+            white-space: nowrap
+        }
+
+        .hero {
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 8px;
+            margin: 16px 0
+        }
+
+        .ban {
+            border-radius: 8px;
+            background: linear-gradient(120deg, var(--m900), var(--m700));
+            color: #fff;
+            padding: 34px 32px;
+            position: relative;
+            overflow: hidden;
+            min-height: 200px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .ban h1 {
+            font-size: clamp(24px, 4vw, 38px);
+            line-height: 1.12;
+            letter-spacing: -.02em;
+            font-weight: 800;
+            max-width: 420px
+        }
+
+        .ban p {
+            margin-top: 10px;
+            color: var(--m100);
+            font-size: 14px;
+            max-width: 380px;
+            line-height: 1.55
+        }
+
+        .ban img {
+            position: absolute;
+            right: 0;
+            top: 0;
+            height: 100%;
+            width: 42%;
+            object-fit: cover;
+            opacity: .9;
+            mask-image: linear-gradient(90deg, transparent, #000 45%);
+            -webkit-mask-image: linear-gradient(90deg, transparent, #000 45%)
+        }
+
+        .side {
+            display: grid;
+            gap: 8px
+        }
+
+        .side div {
+            border-radius: 8px;
+            background: var(--m50);
+            border: 1px solid var(--line);
+            padding: 16px 18px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center
+        }
+
+        .side b {
+            font-size: 26px;
+            color: var(--m800);
+            font-weight: 800;
+            letter-spacing: -.02em
+        }
+
+        .side span {
+            font-size: 12px;
+            color: var(--mut);
+            margin-top: 2px
+        }
+
+        .cat {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 8px;
+            margin-bottom: 16px
+        }
+
+        .cat h2,
+        .sec h2 {
+            font-size: 13px;
+            font-weight: 700;
+            letter-spacing: .06em;
+            text-transform: uppercase;
+            color: var(--mut);
+            padding: 14px 18px;
+            border-bottom: 1px solid var(--line)
+        }
+
+        .cg {
+            display: flex;
+            overflow: auto
+        }
+
+        .ci {
+            flex: 1;
+            min-width: 112px;
+            text-align: center;
+            padding: 16px 8px;
+            cursor: pointer;
+            border: 0;
+            border-right: 1px solid var(--line);
+            background: #fff;
+            font-family: inherit;
+            color: var(--ink);
+            font-size: 13px;
+            font-weight: 500
+        }
+
+        .ci:last-child {
+            border: 0
+        }
+
+        .ci:hover {
+            background: var(--m50)
+        }
+
+        .ci i {
+            display: grid;
+            place-items: center;
+            width: 46px;
+            height: 46px;
+            border-radius: 12px;
+            background: var(--m100);
+            color: var(--m800);
+            margin: 0 auto 8px;
+            font-size: 22px;
+            font-style: normal
+        }
+
+        .ci.on {
+            color: var(--m800);
+            font-weight: 700
+        }
+
+        .ci.on i {
+            background: var(--m800);
+            color: #fff
+        }
+
+        .tb {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            background: var(--m50);
+            border: 1px solid var(--line);
+            border-radius: 6px;
+            padding: 10px 14px;
+            margin-bottom: 12px;
+            font-size: 13px;
+            flex-wrap: wrap
+        }
+
+        .tb span {
+            color: var(--mut)
+        }
+
+        .tb button {
+            border: 1px solid var(--line);
+            background: #fff;
+            border-radius: 4px;
+            padding: 7px 16px;
+            font: 600 13px inherit;
+            font-family: inherit;
+            cursor: pointer;
+            color: var(--ink)
+        }
+
+        .tb button.on {
+            background: var(--m800);
+            color: #fff;
+            border-color: var(--m800)
+        }
+
+        .gr {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(188px, 1fr));
+            gap: 10px;
+            padding-bottom: 40px
+        }
+
+        .cd {
+            background: #fff;
+            border: 1px solid var(--line);
+            border-radius: 4px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: .15s;
+            display: flex;
+            flex-direction: column;
+            text-align: left;
+            font-family: inherit;
+            padding: 0;
+            color: var(--ink)
+        }
+
+        .cd:hover {
+            border-color: var(--m800);
+            box-shadow: 0 4px 14px rgba(82, 10, 29, .14);
+            transform: translateY(-1px)
+        }
+
+        .cd .im {
+            aspect-ratio: 1;
+            position: relative;
+            background: var(--m50)
+        }
+
+        .cd .im img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .tag {
+            position: absolute;
+            top: 0;
+            left: 0;
+            max-width: calc(100% - 10px);
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            background: var(--m800);
+            color: #fff;
+            font-size: 11px;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-bottom-right-radius: 6px
+        }
+
+        .cd .bd {
+            padding: 10px 10px 12px;
+            display: flex;
+            flex-direction: column;
+            gap: 7px;
+            flex: 1
+        }
+
+        .cd h3 {
+            font-size: 14px;
+            font-weight: 600;
+            line-height: 1.35
+        }
+
+        .chip {
+            align-self: flex-start;
+            font-size: 11px;
+            font-weight: 600;
+            color: var(--m800);
+            border: 1px solid var(--m800);
+            padding: 1px 6px;
+            border-radius: 3px
+        }
+
+        .mt {
+            margin-top: auto;
+            display: flex;
+            justify-content: space-between;
+            font-size: 12px;
+            color: var(--mut);
+            gap: 6px
+        }
+
+        .mt span {
+            display: flex;
+            align-items: center;
+            gap: 4px
+        }
+
+        .empty {
+            grid-column: 1/-1;
+            text-align: center;
+            color: var(--mut);
+            padding: 60px 0
+        }
+
+        .ft {
+            background: var(--m50);
+            border-top: 1px solid var(--line);
+            padding: 26px 0;
+            font-size: 12px;
+            color: var(--mut);
+            line-height: 1.7
+        }
+
+        .ov {
+            position: fixed;
+            inset: 0;
+            background: rgba(29, 17, 20, .55);
+            z-index: 50;
+            display: none;
+            overflow: auto;
+            padding: 24px 12px
+        }
+
+        .ov.on {
+            display: block
+        }
+
+        .md {
+            max-width: 980px;
+            margin: 0 auto;
+            background: #fff;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative
+        }
+
+        .x {
+            position: absolute;
+            right: 12px;
+            top: 12px;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            border: 0;
+            background: #fff;
+            box-shadow: 0 1px 6px rgba(0, 0, 0, .2);
+            cursor: pointer;
+            display: grid;
+            place-items: center;
+            font-size: 18px;
+            color: var(--ink);
+            z-index: 2
+        }
+
+        .top {
+            display: grid;
+            grid-template-columns: minmax(0, 420px) 1fr;
+            gap: 28px;
+            padding: 24px
+        }
+
+        .big {
+            aspect-ratio: 1;
+            border-radius: 8px;
+            overflow: hidden;
+            background: var(--m50)
+        }
+
+        .big img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .th {
+            display: flex;
+            gap: 8px;
+            margin-top: 8px
+        }
+
+        .th button {
+            width: 64px;
+            height: 64px;
+            border: 2px solid transparent;
+            border-radius: 6px;
+            overflow: hidden;
+            padding: 0;
+            cursor: pointer;
+            background: none
+        }
+
+        .th button.on {
+            border-color: var(--m800)
+        }
+
+        .th img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block
+        }
+
+        .inf h2 {
+            font-size: 26px;
+            font-weight: 800;
+            letter-spacing: -.02em;
+            line-height: 1.2;
+            margin: 6px 0 14px;
+            padding-right: 36px
+        }
+
+        .fa {
+            background: var(--m50);
+            border-radius: 8px;
+            padding: 6px 16px
+        }
+
+        .fr {
+            display: grid;
+            grid-template-columns: 30px 110px 1fr;
+            gap: 6px;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--line);
+            font-size: 14px;
+            align-items: start
+        }
+
+        .fr:last-child {
+            border: 0
+        }
+
+        .fr svg {
+            font-size: 18px;
+            color: var(--m800);
+            margin-top: 1px
+        }
+
+        .fr span {
+            color: var(--mut)
+        }
+
+        .fr b {
+            font-weight: 600
+        }
+
+        .ds {
+            padding: 0 24px 28px
+        }
+
+        .ds h3 {
+            font-size: 15px;
+            font-weight: 700;
+            background: var(--m50);
+            padding: 11px 16px;
+            border-left: 4px solid var(--m800);
+            margin-bottom: 12px
+        }
+
+        .ds p {
+            font-size: 14.5px;
+            line-height: 1.75;
+            color: #3b2d31;
+            margin-bottom: 10px;
+            padding: 0 4px
+        }
+
+        @media(max-width:760px) {
+            .hero {
+                grid-template-columns: 1fr
+            }
+
+            .side {
+                grid-template-columns: 1fr 1fr
+            }
+
+            .bar {
+                gap: 10px;
+                flex-wrap: wrap
+            }
+
+            .sb {
+                order: 3;
+                flex-basis: 100%;
+                max-width: none
+            }
+
+            .logo {
+                font-size: 18px
+            }
+
+            .top {
+                grid-template-columns: 1fr;
+                padding: 16px
+            }
+
+            .ds {
+                padding: 0 16px 24px
+            }
+
+            .gr {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 8px
+            }
+
+            .ban {
+                padding: 24px 20px
+            }
+
+            .ban img {
+                opacity: .4
+            }
+
+            .fr {
+                grid-template-columns: 28px 80px 1fr
+            }
+        }
+
+        .logo img {
+            width: 40px;
+            height: 40px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: 50%;
+            padding: 3px;
+            flex: none
+        }
+    </style>
+</head>
+
+<body>
+    <svg width="0" height="0" style="position:absolute">
+        <defs>
+            <symbol id="s" viewBox="0 0 24 24">
+                <circle cx="11" cy="11" r="7" />
+                <path d="m20 20-3.5-3.5" />
+            </symbol>
+            <symbol id="pin" viewBox="0 0 24 24">
+                <path d="M20 10c0 6-8 12-8 12S4 16 4 10a8 8 0 0 1 16 0Z" />
+                <circle cx="12" cy="10" r="3" />
+            </symbol>
+            <symbol id="cal" viewBox="0 0 24 24">
+                <rect x="3" y="5" width="18" height="16" rx="2" />
+                <path d="M16 3v4M8 3v4M3 11h18" />
+            </symbol>
+            <symbol id="usr" viewBox="0 0 24 24">
+                <circle cx="12" cy="8" r="4" />
+                <path d="M4 21a8 8 0 0 1 16 0" />
+            </symbol>
+            <symbol id="bk" viewBox="0 0 24 24">
+                <path d="M4 5a2 2 0 0 1 2-2h13v16H6a2 2 0 0 0-2 2V5Z" />
+                <path d="M4 21h15v-2" />
+            </symbol>
+            <symbol id="x" viewBox="0 0 24 24">
+                <path d="M18 6 6 18M6 6l12 12" />
+            </symbol>
+            <symbol id="grid" viewBox="0 0 24 24">
+                <rect x="3" y="3" width="7" height="7" rx="1.5" />
+                <rect x="14" y="3" width="7" height="7" rx="1.5" />
+                <rect x="3" y="14" width="7" height="7" rx="1.5" />
+                <rect x="14" y="14" width="7" height="7" rx="1.5" />
+            </symbol>
+            <symbol id="mt" viewBox="0 0 24 24">
+                <path d="m3 20 6-11 4 7 3-4 5 8Z" />
+            </symbol>
+            <symbol id="cl" viewBox="0 0 24 24">
+                <path d="M7 18a4 4 0 0 1-.5-7.97A5.5 5.5 0 0 1 17 8.5 4.5 4.5 0 0 1 17.5 18Z" />
+            </symbol>
+            <symbol id="lf" viewBox="0 0 24 24">
+                <path d="M5 19c0-9 5-14 15-14 0 10-5 15-14 15" />
+                <path d="M5 19c3-5 6-8 10-10" />
+            </symbol>
+            <symbol id="wv" viewBox="0 0 24 24">
+                <path d="M2 8c2.5-3 5-3 7.5 0s5 3 7.5 0 3-2 5-1M2 15c2.5-3 5-3 7.5 0s5 3 7.5 0 3-2 5-1" />
+            </symbol>
+            <symbol id="tw" viewBox="0 0 24 24">
+                <path d="M12 2v4M9 22V10l3-4 3 4v12M6 22h12M10 14h4" />
+            </symbol>
+            <symbol id="sn" viewBox="0 0 24 24">
+                <circle cx="12" cy="12" r="4" />
+                <path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M5 19l1.5-1.5M17.5 6.5 19 5" />
+            </symbol>
+            <symbol id="ft" viewBox="0 0 24 24">
+                <path d="M20 4c-9 0-14 5-14 12v4M20 4c0 8-4 12-10 12M6 20l6-6" />
+            </symbol>
+            <symbol id="tr" viewBox="0 0 24 24">
+                <path d="M12 3l5 7h-3l4 6H6l4-6H7l5-7ZM12 16v5" />
+            </symbol>
+            <symbol id="ms" viewBox="0 0 24 24">
+                <path d="M12 3c3 3 3 7 0 10-3-3-3-7 0-10ZM12 13v8M7 21h10" />
+            </symbol>
+            <symbol id="dr" viewBox="0 0 24 24">
+                <path d="M12 3s6 6.5 6 11a6 6 0 0 1-12 0c0-4.5 6-11 6-11Z" />
+            </symbol>
+        </defs>
+    </svg>
+    <header class="hd">
+        <div class="w">
+            <div class="bar">
+                <div class="logo"><img id="lg" alt="Logo Batik Nusantara" width="40" height="40">Batik Nusantara</div>
+                <div class="sb"><input id="q" placeholder="Cari nama batik, daerah, atau pembuat…"
+                        autocomplete="off"><button aria-label="Cari"><svg class="i">
+                            <use href="#s" />
+                        </svg></button></div>
+            </div>
+            <div class="sub"><span>Kenali motif</span><span>Telusuri asal daerah</span><span>Pelajari sejarahnya</span>
+            </div>
+        </div>
+    </header>
+    <main class="w">
+        <section class="hero">
+            <div class="ban">
+                <h1>Kenali batik, kenali cerita di baliknya.</h1>
+                <p>Setiap motif menyimpan asal daerah, masa kemunculan, dan tangan-tangan pembuatnya. Pilih satu untuk
+                    mulai membaca.</p><img id="hi" alt="">
+            </div>
+            <div class="side">
+                <div><b id="nm">5</b><span>motif batik dalam koleksi</span></div>
+                <div><b id="nd">8</b><span>wilayah asal</span></div>
+            </div>
+        </section>
+        <section class="cat">
+            <h2>Jelajahi berdasarkan daerah</h2>
+            <div class="cg" id="cg"></div>
+        </section>
+        <div class="tb"><span>Urutkan</span><button class="on" data-s="a">Nama</button><button
+                data-s="t">Tertua</button><button data-s="n">Terbaru</button><span id="ct"
+                style="margin-left:auto"></span></div>
+        <div class="gr" id="gr"></div>
+    </main>
+    <footer class="ft">
+        <div class="w">Foto motif berasal dari kumpulan dataset citra batik publik di GitHub
+            (xyclone10/batikology-dataset, Lamz16/batik_indonesia, NaraTeam/Klasifikasi_Batik_Aceh,
+            MaulaIlma/Indonesian-Batik-Recognition-Using-GLCM-and-CDH-Methods, BangEjak04/batik-recognition,
+            khadziq059/Ambatik, lutfisyaoqi/BATIK-KLASIFIKASI-, x1nx3r/resnet50-batik-augmentations-benchmark) dan
+            merupakan milik pemegang hak masing-masing. Keterangan tahun adalah perkiraan menurut tradisi dan literatur
+            populer; sejarah batik sering memiliki lebih dari satu versi.</div>
+    </footer>
+    <div class="ov" id="ov">
+        <div class="md" id="md"></div>
+    </div>
+    <script src="config.js"></script>
+    <script src="data.js"></script>
+    <script>
+        const NOFOTO = "data:image/svg+xml;utf8,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 viewBox=%270 0 360 360%27%3E%3Crect width=%27360%27 height=%27360%27 fill=%27%23EFE6DA%27/%3E%3Cg fill=%27none%27 stroke=%27%23B8A58F%27 stroke-width=%278%27 stroke-linejoin=%27round%27%3E%3Crect x=%2790%27 y=%27110%27 width=%27180%27 height=%27140%27 rx=%2714%27/%3E%3Ccircle cx=%27145%27 cy=%27160%27 r=%2714%27/%3E%3Cpath d=%27M90 232l52-46 40 34 30-24 58 50%27/%3E%3C/g%3E%3C/svg%3E";
+        const RG = [['Semua', 'grid'], ['Sumatra', 'wv'], ['DKI Jakarta', 'tw'], ['Jawa Barat', 'cl'], ['Banten', 'mt'], ['Nusa Tenggara', 'tr'], ['Jawa Tengah & DIY', 'mt'], ['Jawa Timur', 'lf'], ['Bali', 'sn'], ['Kalimantan', 'tr'], ['Maluku', 'ms'], ['Papua', 'ft'], ['Lintas Daerah', 'dr']]; let reg = 'Semua', srt = 'a';
+        const $ = s => document.querySelector(s), ic = n => `<svg class="i"><use href="#${n}"/></svg>`;
+        $('#lg').src = A + '/img/logo.png'; $('#nm').textContent = B.length; $('#hi').src = IM.megamendung[1]; $('#nd').textContent = RG.length - 1;
+        $('#cg').innerHTML = RG.map(([r, i]) => `<button class="ci${r === reg ? ' on' : ''}" data-r="${r}"><i>${ic(i)}</i>${r}</button>`).join('');
+        $('#cg').onclick = e => { const b = e.target.closest('.ci'); if (!b) return; reg = b.dataset.r; document.querySelectorAll('.ci').forEach(x => x.classList.toggle('on', x === b)); draw() };
+        document.querySelector('.tb').onclick = e => { const b = e.target.closest('button'); if (!b) return; srt = b.dataset.s; document.querySelectorAll('.tb button').forEach(x => x.classList.toggle('on', x === b)); draw() };
+        $('#q').oninput = draw;
+        function draw() {
+            const q = $('#q').value.toLowerCase().trim(); let l = B.filter(b => (reg === 'Semua' || b.r === reg) && (!q || (b.n + b.r + b.pr + b.by + b.y).toLowerCase().includes(q)));
+            l.sort((a, b) => srt === 'a' ? a.n.localeCompare(b.n) : srt === 't' ? a.yn - b.yn : b.yn - a.yn); $('#ct').textContent = l.length + ' motif';
+            $('#gr').innerHTML = l.length ? l.map(b => `<button class="cd" data-id="${b.id}"><div class="im"><img src="${IM[b.k][0]}" onerror="this.onerror=null;this.src=NOFOTO" alt="${b.n}" loading="lazy" decoding="async"><span class="tag">${b.y.split(' ·')[0]}</span></div><div class="bd"><h3>${b.n}</h3><span class="chip">${b.r}</span><div class="mt"><span>${ic('pin')}${b.pr.split(',')[0]}</span></div></div></button>`).join('') : '<div class="empty">Tidak ada batik yang cocok dengan pencarian.</div>'
+        }
+        $('#gr').onclick = e => { const c = e.target.closest('.cd'); if (c) open(c.dataset.id) };
+        function open(id) {
+            const b = B.find(x => x.id === id), im = IM[b.k];
+            $('#md').innerHTML = `<button class="x" aria-label="Tutup">${ic('x')}</button><div class="top"><div><div class="big"><img id="bg" src="${im[0]}" onerror="this.onerror=null;this.src=NOFOTO" alt="${b.n}"></div><div class="th">${im.map((s, i) => `<button class="${i ? '' : 'on'}" data-s="${i}"><img src="${s}" onerror="this.onerror=null;this.src=NOFOTO" alt=""></button>`).join('')}</div></div>
+<div class="inf"><span class="chip">${b.r}</span><h2>${b.n}</h2><div class="fa">
+<div class="fr">${ic('cal')}<span>Tahun</span><b>${b.y}</b></div><div class="fr">${ic('pin')}<span>Asal</span><b>${b.pr}, ${b.r}</b></div><div class="fr">${ic('usr')}<span>Dibuat oleh</span><b>${b.by}</b></div></div></div></div>
+<div class="ds"><h3>Sejarah</h3>${b.h.map(p => `<p>${p}</p>`).join('')}</div>`;
+            $('#ov').classList.add('on'); $('#ov').scrollTop = 0; document.body.style.overflow = 'hidden';
+            $('#md').querySelector('.x').onclick = close; $('#md').querySelector('.th').onclick = e => { const t = e.target.closest('button'); if (!t) return; $('#bg').src = im[t.dataset.s]; $('#md').querySelectorAll('.th button').forEach(x => x.classList.toggle('on', x === t)) }
+        }
+        function close() { $('#ov').classList.remove('on'); document.body.style.overflow = '' }
+        $('#ov').onclick = e => { if (e.target.id === 'ov') close() }; document.onkeydown = e => { if (e.key === 'Escape') close() };
+        draw();
+    </script>
+</body>
+
+</html>

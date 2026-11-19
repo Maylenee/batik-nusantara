@@ -1,0 +1,8 @@
+{
+  "name": "batik-nusantara",
+  "private": true,
+  "version": "1.0.0",
+  "dependencies": {
+    "@edgeone/pages-blob": "^0.0.19"
+  }
+}
